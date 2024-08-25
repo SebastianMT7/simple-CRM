@@ -1,4 +1,22 @@
-<p>user works!</p>
-<button (click)="openDialog()" matTooltip="Add user" mat-fab color="primary" class="add-user-button" >
-    <mat-icon>add</mat-icon>
-  </button>
+<mat-card appearance="outlined">
+  <table class="user-table">
+    <tr>
+      <th>Name</th>
+      <th>E-Mail</th>
+      <th>City</th>
+    </tr>
+    @for (user of fireService.users; track $index) {
+    <tr routerLink="['/user/' + user.id]">
+      <td>{{ user.firstName}} {{ user.lastName }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.zipCode }} {{ user.city }}</td>
+    </tr>
+    } @empty {
+    <td>No User in List</td>
+    }
+  </table>
+</mat-card>
+
+<button (click)="openDialog()" matTooltip="Add user" mat-fab color="primary" class="add-user-button">
+  <mat-icon>add</mat-icon>
+</button>

@@ -1,3 +1,7 @@
+.logo {
+    max-width: 100%;
+}
+
 .mat-drawer-container {
     height: 100vh;
 }
@@ -17,7 +21,7 @@
     display: flex;
     align-items: center;
 
-    
+
 }
 
 mat-toolbar,
@@ -38,7 +42,7 @@ mat-toolbar-row {
         align-items: center;
         cursor: pointer;
 
-        mat-icon{
+        mat-icon {
             margin-right: 16px;
         }
 
@@ -46,13 +50,14 @@ mat-toolbar-row {
             background-color: rgba(0, 0, 0, 0.04);
         }
 
-        &:focus{
+        &:focus {
             outline: none;
         }
     }
 }
 
-.router-container{
+.router-container {
     padding-left: 56px;
+    padding-right: 56px;
     padding-top: 16px;
 }
