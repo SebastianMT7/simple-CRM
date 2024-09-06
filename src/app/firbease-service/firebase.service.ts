@@ -25,7 +25,19 @@ import { User } from '../../models/user.class';
 export class FirebaseService {
   firestore: Firestore = inject(Firestore);
   unsubUserList;
-  users: User[] = [];
+  users: User[] = [];  //User[] ist die Typendeklaration
+  singleUserlId: any = '';
+  
+  singleUserDetail: User = {
+    id: '',
+    firstName: '',
+    lastName: '',
+    birthDate: 0,
+    email: '',
+    street: '',
+    zipCode: 0,
+    city: '',
+  };
 
   constructor() {
     this.unsubUserList = this.getUserList();
@@ -38,6 +50,7 @@ export class FirebaseService {
       list.forEach((element) => {
         const user = this.setUserObject(element.data(), element.id);
         user.id = element.id;
+        console.log('id', user);
         this.users.push(user);
       });
       list.docChanges().forEach((change) => {
@@ -95,4 +108,17 @@ export class FirebaseService {
       city: user.city,
     };
   }
+
+  getUserDetails() {
+    return onSnapshot(this.getSingleUserDocRef(), (doc) => {
+      // console.log(doc.data());
+      let user = new User(doc.data());
+      this.singleUserDetail = user;
+    });
+  }
+
+  getSingleUserDocRef() {
+    return doc(this.getUsersCollectionRef(), this.singleUserlId);
+  }
+
 }
