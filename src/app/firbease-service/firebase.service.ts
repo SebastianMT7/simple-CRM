@@ -121,4 +121,13 @@ export class FirebaseService {
     return doc(this.getUsersCollectionRef(), this.singleUserlId);
   }
 
+  async updateUser(user:any){
+    await updateDoc(this.getSingleUserDocRef(),this.getCleanJson(user)).catch(
+      (err) => {
+        console.log(err);
+      }      
+    );
+    console.log('updatet user', user)
+  }
+
 }

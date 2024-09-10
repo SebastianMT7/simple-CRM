@@ -8,3 +8,7 @@
       left: 0;
     }
   }
+
+  .mat-mdc-dialog-title+.mat-mdc-dialog-content {
+    padding-top: 8px;
+}

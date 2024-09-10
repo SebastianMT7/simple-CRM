@@ -14,7 +14,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
   selector: 'app-dialog-add-user',
   standalone: true,
   imports: [MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule,
-    MatDatepickerModule, FormsModule,MatProgressBarModule],
+    MatDatepickerModule, FormsModule,MatProgressBarModule, ],
   providers: [provideNativeDateAdapter()],
   templateUrl: './dialog-add-user.component.html',
   styleUrl: './dialog-add-user.component.scss'
@@ -32,8 +32,6 @@ export class DialogAddUserComponent {
     if (this.birthDate) {
     this.user.birthDate = this.birthDate.getTime();
     }
-    console.log('current user', this.user)
-    // this.fireService.addUser(this.user);
     this.fireService.addUser(this.user);
     this.loading = false;
     this.closeDialog();
